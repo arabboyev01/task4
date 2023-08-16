@@ -11,8 +11,9 @@ import {
 import { Field, Form } from 'react-final-form'
 import React from 'react'
 import { SignUpFormData } from '@/types'
+import ButtonLoader from '@/components/Loaders/ButtonLoader'
 
-const DumbSignUp: React.FC<SignUpFormData> = ({handleSubmit, handleSwitch}) => (
+const DumbSignUp: React.FC<SignUpFormData> = ({handleSubmit, handleSwitch, loading}) => (
      <StyleLogin>
         <MainTitle>Sign Up</MainTitle>
         <Form
@@ -37,7 +38,7 @@ const DumbSignUp: React.FC<SignUpFormData> = ({handleSubmit, handleSwitch}) => (
                         {({input}) => <Input {...input} type="password" id="password"/>}
                     </Field>
 
-                    <Button type="submit">Login</Button>
+                    <Button type="submit">{loading ? <ButtonLoader /> : "Sign up"}</Button>
                     <SwitchPage>
                         <Text>Do you have an account?</Text>
                         <PrimaryLink onClick={handleSwitch}>Login</PrimaryLink>

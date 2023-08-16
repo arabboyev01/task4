@@ -29,11 +29,10 @@ const DumbLogin: React.FC<LoginFormData> = ({handleSubmit, handleSwitch, loading
                         {({input}) => <Input {...input} type="password" id="password"/>}
                     </Field>
 
-                    <Button type="submit">Login</Button>
+                    <Button type="submit">{loading ? <ButtonLoader/> : 'Login'}</Button>
                     <SwitchPage>
                         <Text>Don&apos;t have an account?</Text>
-                        <PrimaryLink onClick={handleSwitch}>
-                            {loading ? <ButtonLoader/> : 'Sign up'}</PrimaryLink>
+                        <PrimaryLink onClick={handleSwitch}>Sign up</PrimaryLink>
                     </SwitchPage>
                 </LoginForm>
             )}

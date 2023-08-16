@@ -36,6 +36,11 @@ export const Button = styled.button`
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
 `;
 export const SwitchPage = styled.div`
   margin: 12px 0;

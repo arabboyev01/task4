@@ -2,8 +2,8 @@ import { Oval } from 'react-loader-spinner'
 
 const ButtonLoader = () => (
     <Oval
-        height={80}
-        width={80}
+        height={20}
+        width={20}
         color="#4fa94d"
         wrapperStyle={{}}
         wrapperClass=""
