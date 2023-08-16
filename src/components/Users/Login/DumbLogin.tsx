@@ -10,8 +10,9 @@ import {
 import { Form, Field } from 'react-final-form';
 import { LoginFormData } from '@/types'
 import React from 'react'
+import ButtonLoader from '@/components/Loaders/ButtonLoader'
 
-const DumbLogin: React.FC<LoginFormData> = ({handleSubmit, handleSwitch}) => (
+const DumbLogin: React.FC<LoginFormData> = ({handleSubmit, handleSwitch, loading}) => (
     <StyleLogin>
         <MainTitle>Login</MainTitle>
         <Form
@@ -31,7 +32,8 @@ const DumbLogin: React.FC<LoginFormData> = ({handleSubmit, handleSwitch}) => (
                     <Button type="submit">Login</Button>
                     <SwitchPage>
                         <Text>Don&apos;t have an account?</Text>
-                        <PrimaryLink onClick={handleSwitch}>Sign up </PrimaryLink>
+                        <PrimaryLink onClick={handleSwitch}>
+                            {loading ? <ButtonLoader/> : 'Sign up'}</PrimaryLink>
                     </SwitchPage>
                 </LoginForm>
             )}
