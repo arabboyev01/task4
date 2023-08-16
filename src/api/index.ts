@@ -23,4 +23,8 @@ export class ApiCall {
         });
         return await response.json();
     }
+
+    async SetToken(token: string): Promise<any> {
+        window.localStorage.setItem("AuthToken",token)
+    }
 }

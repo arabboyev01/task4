@@ -8,8 +8,10 @@ const Login = () => {
     const router = useRouter()
 
     const handleLogin = (values: LoginFormData) => {
-        api.LoginPost("api/login", values).then(console.log)
-            .catch(err => console.log(err))
+        api.LoginPost("api/login", values).then(data => {
+            api.SetToken(data.token)
+            router.push("/")
+        }).catch(err => console.log(err))
     }
 
     const handleSwitch = () => {

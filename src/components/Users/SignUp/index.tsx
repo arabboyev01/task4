@@ -7,13 +7,13 @@ const SignUp = () => {
 
     const router = useRouter()
     const handleSignUp = (values: SignUpFormData) => {
-        console.log(values)
-        api.SignUp("api/sign-up", values).then(console.log)
+        api.SignUp("api/sign-up", values).then(data => {
+            api.SetToken(data.token)
+            router.push("/")
+        })
             .catch(err => console.log(err))
     }
-     const handleSwitch = () => {
-        router.push("/login")
-    }
+     const handleSwitch = () => router.push("/login")
 
     return <DumbSignUp handleSubmit={handleSignUp} handleSwitch={handleSwitch}/>
 }
