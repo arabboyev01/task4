@@ -30,5 +30,5 @@ export interface tableInterfaces {
 export interface TableButtons {
     handleBlockClick: () => void
     handleUnblockClick: () => void
-    handleDeleteClick: () => void
+    handleDeleteClick: (e: string) => void
 }

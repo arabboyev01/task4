@@ -13,7 +13,7 @@ export class ApiCall {
                 throw new Error('Failed to fetch data');
             }
 
-           return await response.json();
+            return await response.json();
         } catch (error) {
             console.error('Error fetching data:', error);
             throw error;
@@ -41,5 +41,13 @@ export class ApiCall {
 
     async SetToken(token: string): Promise<any> {
         window.localStorage.setItem('AuthToken', token)
+    }
+
+    async DeleteUser(endpoint: string, payload: string): Promise<any> {
+       return await fetch(`${this.baseUrl}/${endpoint}`, {
+            method: 'DELETE',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(payload),
+        });
     }
 }

@@ -1,25 +1,27 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { api } from '@/config';
 import DumbTable from '@/components/ManagmentTable/DumbTble'
 import { User } from '@/types'
 import Buttons from '@/components/Buttons'
+import { token } from '@/config'
 
 const UserManagementTable: React.FC = () => {
     const [users, setUsers] = useState<User[]>([]);
     const [selectAll, setSelectAll] = useState(false);
+    const memoizedToken = useMemo(() => token, []);
 
+    console.log(memoizedToken)
     const fetchUsers = useCallback(async () => {
         try {
-            const token = typeof window !== 'undefined' ? window.localStorage.getItem('AuthToken') : null;
-            const response = await api.GetUsers('users', token);
+            const response = await api.GetUsers('users', memoizedToken);
             setUsers(response);
-            console.log(response)
         } catch (error) {
             console.error('Error fetching user data:', error);
         }
-    }, []);
+    }, [memoizedToken]);
 
     useEffect(() => {
+        console.log('Effect is running');
         fetchUsers();
     }, [fetchUsers]);
 
