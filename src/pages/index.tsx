@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
+import ManagmentTable from '@/components/ManagmentTable'
 
 export default function Home() {
     const router = useRouter();
@@ -9,9 +10,5 @@ export default function Home() {
         else router.push("/")
     }, [router, isToken])
 
-  return (
-    <main>
-      <h1>This is home page</h1>
-    </main>
-  )
+  return <ManagmentTable />
 }

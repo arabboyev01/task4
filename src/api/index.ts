@@ -5,6 +5,21 @@ export class ApiCall {
         this.baseUrl = baseUrl;
     }
 
+    async GetUsers(endpoint: string, payload: string | null): Promise<any> {
+        try {
+            const response = await fetch(`${this.baseUrl}/${endpoint}`, {headers: {Authorization: `Bearer ${payload}`}})
+
+            if (!response.ok) {
+                throw new Error('Failed to fetch data');
+            }
+
+           return await response.json();
+        } catch (error) {
+            console.error('Error fetching data:', error);
+            throw error;
+        }
+    }
+
     async LoginPost(endpoint: string, payload: object): Promise<any> {
         const response = await fetch(`${this.baseUrl}/${endpoint}`, {
             method: 'POST',
@@ -25,6 +40,6 @@ export class ApiCall {
     }
 
     async SetToken(token: string): Promise<any> {
-        window.localStorage.setItem("AuthToken",token)
+        window.localStorage.setItem('AuthToken', token)
     }
 }
