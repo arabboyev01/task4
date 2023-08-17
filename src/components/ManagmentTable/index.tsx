@@ -15,6 +15,7 @@ const UserManagementTable: React.FC = () => {
         try {
             const response = await api.GetUsers('users', memoizedToken);
             setUsers(response);
+            console.log(response)
         } catch (error) {
             console.error('Error fetching user data:', error);
         }
