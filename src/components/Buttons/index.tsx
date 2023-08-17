@@ -1,7 +1,7 @@
 import DumbButtons from '@/components/Buttons/DumbButtons'
-import { api } from '@/config'
+import { api, token } from '@/config'
 
-const UserManagementTable = ({users}: any) => {
+const UserManagementTable = ({usersId}: object | any) => {
     // ... (Previous code for state and functions)
 
     // Action handlers
@@ -15,9 +15,11 @@ const UserManagementTable = ({users}: any) => {
         // Implement unblock logic here, update the status of unblockedUsers
     };
 
-    const handleDeleteClick = (username: string) => {
-        api.DeleteUser('api/delete-user', username).then((data) => console.log(data))
+    const handleDeleteClick = () => {
+        usersId.map((id: number) => {
+             api.DeleteUser('api/delete-user', id, token).then((data) => console.log(data))
             .catch(err => console.log(err))
+        })
     };
 
     return <DumbButtons

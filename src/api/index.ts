@@ -43,11 +43,15 @@ export class ApiCall {
         window.localStorage.setItem('AuthToken', token)
     }
 
-    async DeleteUser(endpoint: string, payload: string): Promise<any> {
+    async DeleteUser(endpoint: string, payload: number, token: string|null): Promise<any> {
+        const requestBody = JSON.stringify({ id: payload });
        return await fetch(`${this.baseUrl}/${endpoint}`, {
             method: 'DELETE',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(payload),
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: requestBody
         });
     }
 }

@@ -8,21 +8,19 @@ import { token } from '@/config'
 const UserManagementTable: React.FC = () => {
     const [users, setUsers] = useState<User[]>([]);
     const [selectAll, setSelectAll] = useState(false);
+    const [usersId, setUsersId] = useState<object | any>([])
     const memoizedToken = useMemo(() => token, []);
 
-    console.log(memoizedToken)
     const fetchUsers = useCallback(async () => {
         try {
             const response = await api.GetUsers('users', memoizedToken);
             setUsers(response);
-            console.log(response)
         } catch (error) {
             console.error('Error fetching user data:', error);
         }
     }, [memoizedToken]);
 
     useEffect(() => {
-        console.log('Effect is running');
         fetchUsers();
     }, [fetchUsers]);
 
@@ -31,13 +29,7 @@ const UserManagementTable: React.FC = () => {
     };
 
     const toggleSelectUser = (userId: number) => {
-        const updatedUsers = users.map(user => {
-            if (user.id === userId) {
-                return {...user, selected: !user.selected};
-            }
-            return user;
-        });
-        setUsers(updatedUsers);
+        setUsersId([...usersId, userId])
     };
 
     return (
@@ -47,7 +39,7 @@ const UserManagementTable: React.FC = () => {
                 toggleSelectAll={toggleSelectAll}
                 users={users}
                 toggleSelectUser={toggleSelectUser}/>
-            <Buttons users={users}/>
+            <Buttons usersId={usersId}/>
         </>
     )
 };
