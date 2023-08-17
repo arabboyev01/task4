@@ -26,3 +26,9 @@ export interface tableInterfaces {
     users: User[]
     toggleSelectUser: (id: number) => void
 }
+
+export interface TableButtons {
+    handleBlockClick: () => void
+    handleUnblockClick: () => void
+    handleDeleteClick: () => void
+}
