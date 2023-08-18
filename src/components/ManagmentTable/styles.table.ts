@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { ActiveProps } from '@/types'
 
 export const TableContainer = styled.div`
   border: 1px solid #ccc;
@@ -19,10 +20,10 @@ export const TableCell = styled.div`
   width: 20%;
 `;
 
-export const Active = styled.div`
+export const Active: any = styled.div<ActiveProps>`
   padding: 5px;
   border-bottom: 1px solid #ccc;
   width: 20%;
-  color: black;
-  background: greenyellow;
+  color: ${props => (props.status === 'blocked' ? 'white' : 'black')};
+  background: ${props => (props.status === 'blocked' ? 'red' : 'greenyellow')};
 `

@@ -2,17 +2,18 @@ import DumbButtons from '@/components/Buttons/DumbButtons'
 import { api, token } from '@/config'
 
 const UserManagementTable = ({usersId}: object | any) => {
-    // ... (Previous code for state and functions)
-
-    // Action handlers
     const handleBlockClick = () => {
-
-        // Implement block logic here, update the status of blockedUsers
+        usersId.map((id: number) => {
+          api.ChangeStatus("api/block", id, token).then((data) => console.log(data))
+              .catch(err => console.log(err));
+        })
     };
 
     const handleUnblockClick = () => {
-
-        // Implement unblock logic here, update the status of unblockedUsers
+        usersId.map((id: number) => {
+          api.ChangeStatus("api/unblock", id, token).then((data) => console.log(data))
+              .catch((err) => console.log(err));
+        })
     };
 
     const handleDeleteClick = () => {

@@ -54,4 +54,15 @@ export class ApiCall {
             body: requestBody
         });
     }
+     async ChangeStatus(endpoint: string, payload: number, token: string|null): Promise<any> {
+        const requestBody = JSON.stringify({ id: payload });
+       return await fetch(`${this.baseUrl}/${endpoint}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: requestBody
+        });
+    }
 }

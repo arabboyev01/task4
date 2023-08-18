@@ -32,3 +32,6 @@ export interface TableButtons {
     handleUnblockClick: () => void
     handleDeleteClick: () => void
 }
+export interface ActiveProps {
+  status: 'active' | 'blocked'; // Define the possible values for status
+}

@@ -26,7 +26,7 @@ const DumbTable: React.FC<tableInterfaces> = ({selectAll, toggleSelectAll, users
                     <TableCell>{user.lastname}</TableCell>
                     <TableCell>{user.username}</TableCell>
                     <TableCell>{formattedDate(user.registration_time)}</TableCell>
-                    <Active>{user.status}</Active>
+                    <Active status={user.status}>{user.status}</Active>
                 </TableHeader>
             ))}
     </TableContainer>
