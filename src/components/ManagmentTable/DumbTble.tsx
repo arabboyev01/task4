@@ -7,7 +7,7 @@ const DumbTable: React.FC<tableInterfaces> = ({selectAll, toggleSelectAll, users
     <TableContainer>
         <TableHeader>
             <TableCell>
-              <input type="checkbox" checked={selectAll} onChange={toggleSelectAll}/>
+                <input type="checkbox" checked={selectAll} onChange={toggleSelectAll}/>
             </TableCell>
             <TableCell>ID</TableCell>
             <TableCell>Firstname</TableCell>
@@ -16,7 +16,8 @@ const DumbTable: React.FC<tableInterfaces> = ({selectAll, toggleSelectAll, users
             <TableCell>Registration Time</TableCell>
             <TableCell>Status</TableCell>
         </TableHeader>
-            {users?.map((user) => (
+        {!users.length ? 'There is no data' :
+            users?.map((user) => (
                 <TableHeader key={user.id}>
                     <TableCell>
                         <input type="checkbox" checked={user.selected} onChange={() => toggleSelectUser(user.id)}/>
@@ -28,7 +29,8 @@ const DumbTable: React.FC<tableInterfaces> = ({selectAll, toggleSelectAll, users
                     <TableCell>{formattedDate(user.registration_time)}</TableCell>
                     <Active status={user.status}>{user.status}</Active>
                 </TableHeader>
-            ))}
+            ))
+        }
     </TableContainer>
 )
 
