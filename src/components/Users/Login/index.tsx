@@ -24,7 +24,8 @@ const Login = () => {
                 router.push('/');
             }
             setLoading(false)
-        }).catch(err => console.log(err)).finally(() => setLoading(false))
+        }).catch(err => console.log(err))
+            .finally(() => setLoading(false))
     }
 
     const handleSwitch = () => {

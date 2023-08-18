@@ -3,6 +3,7 @@ import { SignUpFormData } from '@/types'
 import { useRouter } from 'next/router'
 import { api } from '@/config'
 import { useState } from 'react'
+import toast from 'react-hot-toast';
 
 const SignUp = () => {
 
@@ -15,6 +16,10 @@ const SignUp = () => {
             api.SetToken(data.token)
             router.push('/')
             setLoading(false)
+            toast('You are successfully signed up', {
+                duration: 4000,
+                position: 'top-center',
+            })
         }).catch(err => console.log(err)).finally(() => setLoading(false))
     }
 
