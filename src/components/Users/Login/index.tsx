@@ -22,6 +22,7 @@ const Login = () => {
                 })
                 api.SetToken(data.token)
                 router.push('/');
+                window.location.reload();
             }
             setLoading(false)
         }).catch(err => console.log(err))

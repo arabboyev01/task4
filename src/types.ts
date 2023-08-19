@@ -35,3 +35,7 @@ export interface TableButtons {
 export interface ActiveProps {
   status: 'active' | 'blocked'; // Define the possible values for status
 }
+
+export interface AuthPageProps {
+  token?: string;
+}
