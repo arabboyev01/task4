@@ -10,7 +10,6 @@ const UserManagementTable: React.FC = () => {
     const [selectAll, setSelectAll] = useState(false);
     const [usersId, setUsersId] = useState<object | any>([])
     const memoizedToken = useMemo(() => token, []);
-    console.log(memoizedToken)
 
     const fetchUsers = useCallback(async () => {
         try {
